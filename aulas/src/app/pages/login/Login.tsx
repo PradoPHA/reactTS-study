@@ -1,13 +1,39 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 export const Login = () => {
 
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
 
+    // if (window.confirm('Você gosta de musculação?')){
+    //     console.log('É dos meus!');
+    // } else{
+    //     console.log('Não sabe o que tá perdendo...');
+    // } // NÃO INTERESSANTE, USAR useEffect!!!
+
+    // Acontece apenas uma vez! Útil para chamadas de API para mostrar, calcular etc.
+    useEffect(() => {
+        const verify = window.confirm('Você gosta de musculação?');
+        
+        if (verify){
+            console.log('É dos meus!');
+        } else{
+            console.log('Não sabe o que tá perdendo...');
+        }
+    }, []);
+
+    useEffect(() => {
+        console.log(email);
+    }, [email]);
+    
+    useEffect(() => {
+        console.log(password);
+    }, [password]);
+
+
     const handleEntrar = () => {
-        console.log('Seu e-mail é: ' + email);
-        console.log('Sua senha é: ' + password);
+        console.log(email);
+        console.log(password);
     }
 
     return (
