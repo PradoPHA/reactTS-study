@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 
 export const Login = () => {
 
@@ -12,24 +12,39 @@ export const Login = () => {
     // } // NÃO INTERESSANTE, USAR useEffect!!!
 
     // Acontece apenas uma vez! Útil para chamadas de API para mostrar, calcular etc.
-    useEffect(() => {
-        const verify = window.confirm('Você gosta de musculação?');
+    // useEffect(() => {
+    //     const verify = window.confirm('Você gosta de musculação?');
         
-        if (verify){
-            console.log('É dos meus!');
-        } else{
-            console.log('Não sabe o que tá perdendo...');
-        }
-    }, []);
+    //     if (verify){
+    //         console.log('É dos meus!');
+    //     } else{
+    //         console.log('Não sabe o que tá perdendo...');
+    //     }
+    // }, []);
 
-    useEffect(() => {
-        console.log(email);
-    }, [email]);
+    // useEffect
+
+    // useEffect(() => {
+    //     console.log(email);
+    // }, [email]);
     
-    useEffect(() => {
-        console.log(password);
-    }, [password]);
+    // useEffect(() => {
+    //     console.log(password);
+    // }, [password]);
 
+    //useMemo
+
+    // const emailLength = useMemo(() => {
+    //     console.log('EXECUTOU!');
+    //     return email.length * 1000;
+    // }, [email.length]);
+
+    // useCallback
+
+    // const handleEntrar = useCallback(() => {
+    //     console.log(email);
+    //     console.log(password);
+    // }, []);
 
     const handleEntrar = () => {
         console.log(email);
@@ -39,6 +54,8 @@ export const Login = () => {
     return (
         <div>
             <form>
+
+                <p> Caracteres * 1000 no E-mail: {email.length /*poderia ser emailLength no uso de useMemo*/}</p>
 
                 <label>
                     <span>E-mail</span>
