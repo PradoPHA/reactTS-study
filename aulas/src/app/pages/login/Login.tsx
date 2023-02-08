@@ -1,9 +1,24 @@
-import { useEffect, useMemo, useState } from "react"
+import {  useRef, useState } from "react"
+import { Link } from "react-router-dom";
+import { InputLogin } from "./components/InputLogin";
 
 export const Login = () => {
-
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
+
+    // useRef
+
+    // const inputPasswordRef = useRef<HTMLInputElement>(null);
+
+    // useEffect
+
+    // useEffect(() => {
+    //     console.log(email);
+    // }, [email]);
+
+    // useEffect(() => {
+    //     console.log(password);
+    // }, [password]);
 
     // if (window.confirm('Você gosta de musculação?')){
     //     console.log('É dos meus!');
@@ -14,23 +29,13 @@ export const Login = () => {
     // Acontece apenas uma vez! Útil para chamadas de API para mostrar, calcular etc.
     // useEffect(() => {
     //     const verify = window.confirm('Você gosta de musculação?');
-        
+
     //     if (verify){
     //         console.log('É dos meus!');
     //     } else{
     //         console.log('Não sabe o que tá perdendo...');
     //     }
     // }, []);
-
-    // useEffect
-
-    // useEffect(() => {
-    //     console.log(email);
-    // }, [email]);
-    
-    // useEffect(() => {
-    //     console.log(password);
-    // }, [password]);
 
     //useMemo
 
@@ -55,22 +60,34 @@ export const Login = () => {
         <div>
             <form>
 
-                <p> Caracteres * 1000 no E-mail: {email.length /*poderia ser emailLength no uso de useMemo*/}</p>
+                <p> Qtd caracteres no Email: {email.length /*poderia ser emailLength no uso de useMemo*/}</p>
 
-                <label>
-                    <span>E-mail</span>
-                    <input value={email} onChange={e => setEmail(e.target.value)}/>
-                </label>
+                <InputLogin
+                    label="E-mail"
+                    value={email}
+                    onChange={newValue => setEmail(newValue)}
+                    // onPressEnter={() => inputPasswordRef.current?.focus()}
+                />
 
-                <label>
+                <InputLogin
+                    label="Senha"
+                    value={password}
+                    onChange={newValue => setPassword(newValue)}
+                    type="password"
+                />
+                {/* <label>
                     <span>Senha</span>
-                    <input type="password" value={password} onChange={p => setPassword(p.target.value)}/>
-                </label>
+                    <input ref={inputPasswordRef} type="password" value={password}
+                        onChange={p => setPassword(p.target.value)}
+                    />
+                </label> */}
 
                 <button type="button" onClick={handleEntrar}>
                     Entrar
                 </button>
-                
+
+                <Link to="/pagina-inicial">Dashboard</Link>
+
             </form>
         </div>
     )
